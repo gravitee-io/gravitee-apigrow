@@ -21,9 +21,9 @@ WORKDIR /app
 
 COPY package.json /app
 RUN npm install
-COPY index.dist.js /app
+COPY app.dist.js /app
 COPY .env.dist /app
 COPY dist /app/dist
 
-CMD node index.dist.js
+CMD node app.dist.js
 EXPOSE 3003
