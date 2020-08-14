@@ -1,0 +1,64 @@
+version: "3.5"
+
+volumes:
+  datamongo: {}
+
+services:
+  nginx:
+    image: nginx:1.15-alpine
+    volumes:
+      - ./frontend/config/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend/build:/usr/share/nginx/html
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo:4.0
+    container_name: mongo
+    volumes:
+      - datamongo:/data/db
+    networks:
+      internal: {}
+
+  api:
+    image: node:12
+    container_name: api
+    volumes:
+      - ./backends/api:/app
+    working_dir: /app
+    user: node
+    ports:
+      - "3001:3001"
+    command: ["npm", "start"]
+    environment:
+      - HOST=0.0.0.0
+      - MONGO_URI=mongodb://mongo:27017/apigrow
+      - SWAGGER_PRODUCER_URL=http://swagger-producer-api:3003
+      - GRAVITEE_MANAGEMENT_URL=http://gravitee.local.io:8083/management
+    networks:
+      internal: {}
+      apigrow:
+        aliases:
+          - apigrow.local.io
+
+  swagger-producer-api:
+    image: node:12
+    container_name: swagger-producer-api
+    volumes:
+      - ./backends/swagger-producer:/app
+    working_dir: /app
+    user: node
+    ports:
+      - "3003:3003"
+    command: ["npm", "start"]
+    environment:
+      - HOST=0.0.0.0
+      - APIZR_API_KEY_VALUE=PgUfDekIFAYmanUeRIQU
+    networks:
+      internal: {}
+
+networks:
+  internal:
+    name: internal
+  apigrow:
+    name: apigrow
