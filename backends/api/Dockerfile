@@ -19,6 +19,7 @@ LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
 
+RUN apk --no-cache add krb5 pcre
 COPY package.json /app
 RUN npm install
 COPY index.dist.js /app
