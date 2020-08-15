@@ -19,9 +19,10 @@ LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
 
-RUN apk --no-cache add gcc libc-dev libressl-dev krb5 pcre make python3 curl-dev g++
+RUN apk --update --no-cache add gcc python3-dev python3 libc-dev libressl-dev krb5 pcre make curl-dev g++ \
+    npm install
+
 COPY package.json /app
-RUN npm install
 COPY index.dist.js /app
 COPY dist /app/dist
 
