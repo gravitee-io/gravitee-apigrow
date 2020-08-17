@@ -14,15 +14,14 @@
 # limitations under the License.
 #
 
-FROM node:12-alpine3.12
+FROM node:12
 LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
 
-RUN apk --update --no-cache add gcc python3-dev python3 libc-dev libressl-dev krb5 pcre make curl-dev g++ \
-    npm install
-
 COPY package.json /app
+RUN npm install
+
 COPY index.dist.js /app
 COPY dist /app/dist
 
