@@ -23,6 +23,7 @@ COPY package.json /app
 RUN npm install
 
 COPY index.dist.js /app
+COPY .env.dist /app/.env
 COPY dist /app/dist
 
 CMD node index.dist.js

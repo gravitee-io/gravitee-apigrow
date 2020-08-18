@@ -22,7 +22,7 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY app.dist.js /app
-COPY .env.dist /app
+COPY .env.dist /app/.env
 COPY dist /app/dist
 
 CMD node app.dist.js
