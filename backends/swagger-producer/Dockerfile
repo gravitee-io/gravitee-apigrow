@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-FROM node:12-alpine3.12
+FROM node:12
 LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
