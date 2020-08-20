@@ -24,8 +24,8 @@ USER 1001
 COPY package.json /app
 
 RUN mkdir "/.npm" \
-    chown -R 1001:0 "/.npm" \
-    npm install
+    && chown -R 1001:0 "/.npm" \
+    && npm install
 
 COPY index.dist.js /app
 COPY .env.dist /app/.env
