@@ -22,7 +22,9 @@ WORKDIR /app
 USER 1001
 
 COPY package.json /app
-RUN chown -R 1001:0 "/.npm " \
+
+RUN mkdir "/.npm" \
+    chown -R 1001:0 "/.npm" \
     npm install
 
 COPY app.dist.js /app
