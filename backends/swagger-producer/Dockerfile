@@ -22,7 +22,7 @@ WORKDIR /app
 USER 1001
 
 COPY package.json /app
-RUN sudo chown -R 1001:0 "/.npm " \
+RUN chown -R 1001:0 "/.npm " \
     npm install
 
 COPY app.dist.js /app
