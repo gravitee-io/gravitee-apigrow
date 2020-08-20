@@ -21,7 +21,8 @@ WORKDIR /app
 
 COPY package.json /app
 
-RUN npm install
+RUN npm install \
+    && mkdir -p /app/files
 
 COPY index.dist.js /app
 COPY .env.dist /app/.env
