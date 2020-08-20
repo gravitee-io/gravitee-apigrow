@@ -19,8 +19,11 @@ LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
 
+USER 1001
+
 COPY package.json /app
 RUN npm install
+
 COPY app.dist.js /app
 COPY .env.dist /app/.env
 COPY dist /app/dist
