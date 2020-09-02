@@ -2,7 +2,6 @@
     "API_URL": "http://autoswagger.local.io:3001",
     "CAPTCHA_TOKEN": "6Lewq5IUAAAAAN-cpv-zPUGyeFXFwOuGGYDcRMqS",
     "CAPTCHA_BUTTON_TOKEN": "6LebgfAUAAAAAGdo2kM2kQuiQgLn3KiD90sTrf3e",
-    "STRPKEY": "pk_test_upCOLGIIAjsLd5sprb27Dp2E",
     "GRAVITEE_ENABLED": false,
     "GRAVITEE_MANAGEMENT_UI_URL": "http://gravitee.local.io:8084"
 }
