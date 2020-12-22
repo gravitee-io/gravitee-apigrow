@@ -19,17 +19,12 @@ LABEL maintainer="contact@graviteesource.com"
 
 WORKDIR /app
 
-COPY package.json /app
-
-RUN npm install \
-    && mkdir -p /app/files
-
-COPY index.dist.js /app
+COPY nodegit.node /app
 COPY .env.dist /app/.env
-COPY dist /app/dist
+COPY designer-api /app/
 
 USER 1001
 
-CMD node index.dist.js
+CMD ./designer-api
 
 EXPOSE 3001
